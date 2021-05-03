@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheOldDude.DataAccess.Abstractions\TheOldDude.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\TheOldDude.Services.Abstractions\TheOldDude.Services.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

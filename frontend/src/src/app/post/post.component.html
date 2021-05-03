@@ -1,0 +1,41 @@
+<p-dataView #dv
+            [value]="posts$ | async"
+            [loading]="isLoading$ | async"
+            [layout]="view$ | async">
+  <ng-template pTemplate="header">
+    <div class="p-col-12">
+      <div class="post-list-header">
+        <button pButton label="Sort" (click)="sort()"></button>
+        <button pButton label="View" (click)="view()"></button>
+        <button pButton label="Filter" (click)="filter()"></button>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-post pTemplate="listItem">
+    <div class="p-col-12">
+      <div class="post-list-item">
+        <img [src]="post?.image">
+        <div class="post-list-detail">
+          <div class="post-name">
+            {{post?.name}}
+          </div>
+          <div class="post-description">
+            {{post?.description}}
+          </div>
+          <div class="post-pricePerUnit">
+            {{post?.pricePerUnit}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template let-post pTemplate="gridItem">
+    <div class="p-col-3">
+      <div class="post-grid-item p-shadow-1">
+        <div class="image-container">
+          <img class="post-image" [src]="post?.image">
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dataView>

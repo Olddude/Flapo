@@ -1,0 +1,43 @@
+:host {
+  .post-list-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media (min-width: 500px) {
+      justify-content: flex-start;
+    }
+    button {
+      width: 100%;
+      max-width: 100px;
+    }
+    button:not(:last-child) {
+      margin-right: .5rem;
+    }
+  }
+
+  .post-list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    img {
+      height: 150px;
+      width: auto;
+      margin-right: 2rem;
+    }
+  }
+
+  .post-grid-item {
+    margin: .2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 150px;
+      width: auto;
+    }
+  }
+}
