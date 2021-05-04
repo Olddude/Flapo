@@ -1,20 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
-import { Post } from '.';
+import { FilterOptions, Post, SortOptions, ViewType } from '.';
 import * as PostActions from './post.actions';
 
 export const postFeatureKey = 'post';
 
 export interface State {
+  readonly view: ViewType;
   readonly loading?: boolean;
   readonly error?: any;
   readonly response?: Post[];
-  readonly sortOptions?: string;
-  readonly filterOptions?: string;
-  readonly view?: string;
+  readonly sortOptions?: SortOptions;
+  readonly filterOptions?: FilterOptions;
 }
 
 export const initialState: State = {
-  view: 'list'
+  view: ViewType.list
 };
 
 export const reducer = createReducer(
@@ -37,33 +37,22 @@ export const reducer = createReducer(
   })),
   on(PostActions.toggleView, state => ({
     ...state,
-    view: state?.view === 'list' ? 'grid' : 'list'
+    view: state.view === ViewType.list
+      ? ViewType.grid
+      : ViewType.list
   })),
-  on(PostActions.toggleSortOptions, state => {
-    const newState = { ...state };
-    if (!state?.sortOptions) {
-      newState.sortOptions = 'pricePerUnit:asc';
-    } else {
-      if (state.sortOptions === 'pricePerUnit:asc') {
-        newState.sortOptions = 'pricePerUnit:desc';
-      }
-      if (state.sortOptions === 'pricePerUnit:desc') {
-        newState.sortOptions = 'pricePerUnit:asc';
-      }
-    }
-    return newState;
-  }),
-  on(PostActions.toggleFilterOptions, state => {
-    const newState = { ...state };
-    if (!state?.filterOptions) {
-      newState.filterOptions = 'pricePerUnit:$lt2.00';
-    } else {
-      if (state.filterOptions) {
-        newState.filterOptions = undefined;
-      } else {
-        newState.filterOptions = 'pricePerUnit:$lt2.00';
-      }
-    }
-    return newState;
-  })
+  on(PostActions.toggleSortOptions, state => ({
+    ...state,
+    sortOptions: !state.sortOptions
+      ? SortOptions.pricePerUnitAscending
+      : state.sortOptions === SortOptions.pricePerUnitAscending
+        ? SortOptions.pricePerUnitDescending
+        : SortOptions.pricePerUnitAscending
+  })),
+  on(PostActions.toggleFilterOptions, state => ({
+    ...state,
+    filterOptions: !state.filterOptions
+      ? FilterOptions.pricePerUnitLessThanTwo
+      : undefined
+  }))
 );

@@ -7,30 +7,30 @@ export const selectPostState = createFeatureSelector<fromPost.State>(
 
 export const isLoading = createSelector(
   selectPostState,
-  state => state?.loading
+  state => state.loading
 );
 
 export const response = createSelector(
   selectPostState,
-  state => state?.response
+  state => state.response
 );
 
 export const error = createSelector(
   selectPostState,
-  state => state?.error
+  state => state.error
 );
 
 export const view = createSelector(
   selectPostState,
-  state => state?.view
+  state => state.view
 );
 
 export const sortOptions = createSelector(
   selectPostState,
-  state => state?.sortOptions
+  state => state.sortOptions
 );
 
 export const filterOptions = createSelector(
   selectPostState,
-  state => state?.filterOptions
+  state => state.filterOptions
 );

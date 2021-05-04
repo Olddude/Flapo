@@ -1,10 +1,22 @@
 export interface Post {
-  readonly offerId?: number;
-  readonly articleId?: number;
-  readonly name?: string;
-  readonly description?: string;
-  readonly image?: string;
-  readonly pricePerUnitText?: string;
-  readonly pricePerUnit?: number;
-  readonly price?: number;
+  readonly name: string;
+  readonly description: string;
+  readonly pricePerUnit: string;
+  readonly image: string;
+  readonly offerId: number;
+  readonly articleId: number;
+}
+
+export enum ViewType {
+  list = 'list',
+  grid = 'grid'
+}
+
+export enum SortOptions {
+  pricePerUnitAscending = 'pricePerUnit:asc',
+  pricePerUnitDescending = 'pricePerUnit:desc'
+}
+
+export enum FilterOptions {
+  pricePerUnitLessThanTwo = 'pricePerUnit:$lt2.00'
 }

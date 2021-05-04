@@ -20,16 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'theolddude-website'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('theolddude-website');
-  });
-
-  it('should render title', () => {
+  it('should render main router outlet inside app div', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('theolddude-website app is running!');
+    expect(compiled.querySelector('#app > main > router-outlet')).toBeTruthy();
   });
 });

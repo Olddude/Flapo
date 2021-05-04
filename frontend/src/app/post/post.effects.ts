@@ -22,7 +22,7 @@ export class PostEffects {
         this.store.select(filterOptions)
       ),
       map(([_, sortBy, filterBy]) => {
-        return uriTemplate(environment.api + '/posts{?sortBy,filterBy}')
+        return uriTemplate(`${environment.api}/posts{?sortBy,filterBy}`)
           .fillFromObject({ sortBy, filterBy });
       }),
       switchMap(url => {
@@ -31,7 +31,7 @@ export class PostEffects {
           catchError(error => of(PostActions.loadPostsFailure({ error })))
         );
       })
-    )
+    );
   });
 
   toggleSort$ = createEffect(() => {
