@@ -1,7 +1,7 @@
 FROM node AS build
 WORKDIR /app
 
-COPY ./src .
+COPY ./ .
 RUN npm install
 RUN npm run build -- --prod
 

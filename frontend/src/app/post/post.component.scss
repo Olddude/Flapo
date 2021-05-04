@@ -21,11 +21,15 @@
     align-items: center;
     padding: 1rem;
     width: 100%;
+    overflow: none;
 
-    img {
-      height: 150px;
-      width: auto;
-      margin-right: 2rem;
+    .image-container {
+      overflow: hidden;
+      img {
+        height: 150px;
+        width: auto;
+        margin-right: 2rem;
+      }
     }
   }
 
@@ -35,9 +39,12 @@
     align-items: center;
     justify-content: center;
 
-    img {
-      height: 150px;
-      width: auto;
+    .image-container {
+      overflow: hidden;
+      img {
+        height: 150px;
+        width: auto;
+      }
     }
   }
 }

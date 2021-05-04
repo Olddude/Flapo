@@ -14,7 +14,9 @@
   <ng-template let-post pTemplate="listItem">
     <div class="p-col-12">
       <div class="post-list-item">
-        <img [src]="post?.image">
+        <div class="image-container">
+          <img [src]="post?.image">
+        </div>
         <div class="post-list-detail">
           <div class="post-name">
             {{post?.name}}
