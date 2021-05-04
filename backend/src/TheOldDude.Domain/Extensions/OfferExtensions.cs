@@ -6,10 +6,10 @@ namespace TheOldDude.Domain.Extensions
     public static class OfferExtensions
     {
         /// <summary>
-        /// Builds posts from offer articles
+        /// map articles into posts
         /// </summary>
         /// <param name="offer"></param>
-        /// <returns>article posts</returns>
+        /// <returns>posts</returns>
         public static IEnumerable<Post> AsPosts(this Offer offer)
         {
             return offer.Articles.Select(article =>

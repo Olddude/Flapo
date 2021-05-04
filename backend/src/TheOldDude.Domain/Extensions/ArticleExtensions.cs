@@ -12,6 +12,7 @@ namespace TheOldDude.Domain.Extensions
         /// calculates unit count from short description
         /// </summary>
         /// <param name="article"></param>
+        /// <exception cref="InvalidShortDescription"
         /// <returns>unit count</returns>
         public static decimal UnitCount(this Article article)
         {
@@ -36,10 +37,9 @@ namespace TheOldDude.Domain.Extensions
         }
 
         /// <summary>
-        /// price divided by unit count
+        /// calculates price per unit
         /// </summary>
         /// <param name="article"></param>
-        /// <exception cref="InvalidShortDescription"></exception>
         /// <returns>price per unit</returns>
         public static decimal PricePerUnit(this Article article)
         {
