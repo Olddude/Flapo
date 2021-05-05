@@ -14,20 +14,7 @@ namespace TheOldDude.Services.Tests
         [Fact]
         public async Task ThenPostsAreReturned()
         {
-            var reader = new Mock<IOfferReader>();
-            reader.Setup(_ => _.ReadAsync()).ReturnsAsync(MockOffers.Get());
-            var sut = new PostProvider(reader.Object);
-            var posts = await sut.GetAsync(new PostRequest());
-            reader.Verify(_ => _.ReadAsync(), Times.Once);
-            posts.Length.Should().Be(2);
-        }
-    }
-
-    internal static class MockOffers
-    {
-        internal static Offer[] Get()
-        {
-            return new Offer[]
+            var mockOffers = new Offer[]
             {
                 new Offer
                 {
@@ -46,6 +33,12 @@ namespace TheOldDude.Services.Tests
                     }
                 }
             };
+            var reader = new Mock<IOfferReader>();
+            reader.Setup(_ => _.ReadAsync()).ReturnsAsync(mockOffers);
+            var sut = new PostProvider(reader.Object);
+            var posts = await sut.GetAsync(new PostRequest());
+            reader.Verify(_ => _.ReadAsync(), Times.Once);
+            posts.Length.Should().Be(2);
         }
     }
 }

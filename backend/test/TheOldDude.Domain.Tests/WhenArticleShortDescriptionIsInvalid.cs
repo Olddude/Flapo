@@ -5,36 +5,37 @@ using FluentAssertions;
 using Xunit;
 
 using System;
-using System.Globalization;
 
 namespace TheOldDude.Domain.Tests
 {
     public class WhenArticleShortDescriptionIsInvalid
     {
-        [Theory]
-        [InlineData("0.5")]
-        [InlineData("0,5")]
-        public void DeleteMe(string decimalString)
-        {
-            decimal.Parse
-            (
-                decimalString.Replace(",", "."),
-                CultureInfo.InvariantCulture
-            ).Should().Be(0.5m);
-        }
-
         [Fact]
-        public void ThenInvalidShortDescriptionIsThrown()
+        public void ThenThrowsErrorOnUnitCount()
         {
-            var article = new Article
+            var sut = new Article
             {
                 ShortDescription = "20 x asdasdasd"
             };
 
-            Action action = () => article.PricePerUnit();
+            Action action = () => sut.UnitCount();
 
             action.Should().ThrowExactly<InvalidShortDescription>()
-                .WithMessage(article.ShortDescription);
+                .WithMessage(sut.ShortDescription);
+        }
+
+        [Fact]
+        public void ThenThrowsErrorOnPricePerUnit()
+        {
+            var sut = new Article
+            {
+                ShortDescription = "20 x asdasdasd"
+            };
+
+            Action action = () => sut.PricePerUnit();
+
+            action.Should().ThrowExactly<InvalidShortDescription>()
+                .WithMessage(sut.ShortDescription);
         }
     }
 }
