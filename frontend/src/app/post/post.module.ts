@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PostRoutingModule } from './post-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { postFeatureKey, reducer } from './post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PostEffects } from './post.effects';
 import { PostComponent } from './post.component';
@@ -16,6 +18,7 @@ import { MessageService } from 'primeng/api';
   imports: [
     CommonModule,
     PostRoutingModule,
+    StoreModule.forFeature(postFeatureKey, reducer),
     EffectsModule.forFeature([PostEffects]),
 
     DataViewModule,
