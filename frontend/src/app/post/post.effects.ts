@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '.';
 import { Store } from '@ngrx/store';
-import { RootState } from '..';
 import * as uriTemplate from 'uri-templates';
 import { filterOptions, sortOptions } from './post.selectors';
 
@@ -51,7 +50,7 @@ export class PostEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly http: HttpClient,
-    private readonly store: Store<RootState>
+    private readonly store: Store<any>
   ) { }
 
 }
