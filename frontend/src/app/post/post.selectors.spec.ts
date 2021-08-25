@@ -12,15 +12,16 @@ import {
 describe('Post Selectors', () => {
   it('should select the feature state', () => {
     const result = selectPostState({
-      [fromPost.postFeatureKey]: {}
+      [fromPost.postFeatureKey]: fromPost.initialState
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual(fromPost.initialState,);
   });
 
   it('should select loading', () => {
     const result = isLoading({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         loading: true
       }
     });
@@ -30,6 +31,7 @@ describe('Post Selectors', () => {
   it('should select response', () => {
     const result = response({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         response: {}
       }
     });
@@ -39,6 +41,7 @@ describe('Post Selectors', () => {
   it('should select error', () => {
     const result = error({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         error: {}
       }
     });
@@ -48,6 +51,7 @@ describe('Post Selectors', () => {
   it('should select view', () => {
     const result = view({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         view: 'list'
       }
     });
@@ -57,6 +61,7 @@ describe('Post Selectors', () => {
   it('should select sort options', () => {
     const result = sortOptions({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         sortOptions: ''
       }
     });
@@ -66,6 +71,7 @@ describe('Post Selectors', () => {
   it('should select filter options', () => {
     const result = filterOptions({
       [fromPost.postFeatureKey]: {
+        ...fromPost.initialState,
         filterOptions: ''
       }
     });
