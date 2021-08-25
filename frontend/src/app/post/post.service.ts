@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RootState } from 'src/app';
 import {
   loadPosts,
   toggleView,
@@ -23,7 +22,7 @@ export class PostService {
   view$ = this.store.select(view);
 
   constructor(
-    private readonly store: Store<RootState>
+    private readonly store: Store<any>
   ) { }
 
   load(): void {
