@@ -25,12 +25,12 @@ export const view = createSelector(
   state => state.view
 );
 
-export const sortOptions = createSelector(
+export const sortOption = createSelector(
   selectPostState,
-  state => state.sortOptions
+  state => state.sortOption
 );
 
-export const filterOptions = createSelector(
+export const filterOption = createSelector(
   selectPostState,
-  state => state.filterOptions
+  state => state.filterOption
 );

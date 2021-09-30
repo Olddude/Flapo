@@ -12,11 +12,11 @@ export enum ViewType {
   grid = 'grid'
 }
 
-export enum SortOptions {
+export enum SortOption {
   pricePerUnitAscending = 'pricePerUnit:asc',
   pricePerUnitDescending = 'pricePerUnit:desc'
 }
 
-export enum FilterOptions {
+export enum FilterOption {
   pricePerUnitLessThanTwo = 'pricePerUnit:$lt2.00'
 }

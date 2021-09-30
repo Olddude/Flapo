@@ -5,9 +5,21 @@
   <ng-template pTemplate="header">
     <div class="p-col-12">
       <div class="post-list-header">
-        <button pButton label="Sort" (click)="sort()"></button>
-        <button pButton label="View" (click)="view()"></button>
-        <button pButton label="Filter" (click)="filter()"></button>
+        <button pButton
+                iconPos="left"
+                [icon]="currentSortIcon$ | async"
+                [label]="'header.buttons.sort' | translate"
+                (click)="toggleSort()"></button>
+        <button pButton
+                iconPos="left"
+                [icon]="currentViewIcon$ | async"
+                [label]="'header.buttons.view' | translate"
+                (click)="toggleView()"></button>
+        <button pButton
+                iconPos="left"
+                [icon]="currentFilterIcon$ | async"
+                [label]="'header.buttons.filter' | translate"
+                (click)="toggleFilter()"></button>
       </div>
     </div>
   </ng-template>
@@ -15,18 +27,12 @@
     <div class="p-col-12">
       <div class="post-list-item">
         <div class="image-container">
-          <img [src]="post?.image">
+          <img class="post-image" [src]="post?.image">
         </div>
         <div class="post-list-detail">
-          <div class="post-name">
-            {{post?.name}}
-          </div>
-          <div class="post-description">
-            {{post?.description}}
-          </div>
-          <div class="post-pricePerUnit">
-            {{post?.pricePerUnit}}
-          </div>
+          <div class="post-name">{{post?.name}}</div>
+          <div class="post-description">{{post?.description}}</div>
+          <div class="post-pricePerUnit">{{post?.pricePerUnit}}</div>
         </div>
       </div>
     </div>

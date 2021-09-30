@@ -1,0 +1,9 @@
+{
+  "header": {
+    "buttons": {
+      "sort": "Sort",
+      "view": "View",
+      "filter": "Filter"
+    }
+  }
+}

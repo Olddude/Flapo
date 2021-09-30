@@ -15,11 +15,11 @@ export const loadPostsFailure = createAction(
   props<{ error: any }>()
 );
 
-export const toggleSortOptions = createAction(
-  '[Post] Toggle Sort Options');
+export const toggleSortOption = createAction(
+  '[Post] Toggle Sort Option');
 
-export const toggleFilterOptions = createAction(
-  '[Post] Toggle Filter Options'
+export const toggleFilterOption = createAction(
+  '[Post] Toggle Filter Option'
 );
 
 export const toggleView = createAction(

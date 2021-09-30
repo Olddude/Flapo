@@ -25,16 +25,16 @@ describe('loadPostsFailure', () => {
 describe('toggleSortOptions', () => {
   it('should be of type', () => {
     expect(
-      fromPost.toggleSortOptions().type
-    ).toBe('[Post] Toggle Sort Options');
+      fromPost.toggleSortOption().type
+    ).toBe('[Post] Toggle Sort Option');
   });
 });
 
 describe('toggleFilterOptions', () => {
   it('should be of type', () => {
     expect(
-      fromPost.toggleFilterOptions().type
-    ).toBe('[Post] Toggle Filter Options');
+      fromPost.toggleFilterOption().type
+    ).toBe('[Post] Toggle Filter Option');
   });
 });
 

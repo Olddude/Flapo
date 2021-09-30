@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonModule } from 'primeng/button';
 import { DataViewModule } from 'primeng/dataview';
+import { of } from 'rxjs';
+import { FilterOption, SortOption, ViewType } from '.';
 
 import { PostComponent } from './post.component';
 import { PostService } from './post.service';
@@ -12,7 +16,9 @@ describe('PostComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        DataViewModule
+        DataViewModule,
+        ButtonModule,
+        TranslateModule.forRoot()
       ],
       declarations: [ PostComponent ],
       providers: [
@@ -22,7 +28,10 @@ describe('PostComponent', () => {
             load: () => ({}),
             sort: () => ({}),
             filter: () => ({}),
-            view: () => ({})
+            view: () => ({}),
+            view$: of(ViewType.list),
+            sortOption$: of<SortOption>(undefined),
+            filterOption$: of<FilterOption>(undefined)
           })
         }
       ]
@@ -44,19 +53,19 @@ describe('PostComponent', () => {
 
   it('should delegate to service on sort', () => {
     const serviceSortSpy = spyOn(service, 'sort');
-    component.sort();
+    component.toggleSort();
     expect(serviceSortSpy).toHaveBeenCalled();
   });
 
   it('should delegate to service on filter', () => {
     const serviceFilterSpy = spyOn(service, 'filter');
-    component.filter();
+    component.toggleFilter();
     expect(serviceFilterSpy).toHaveBeenCalled();
   });
 
   it('should delegate to service on view', () => {
     const viewFilterSpy = spyOn(service, 'view');
-    component.view();
+    component.toggleView();
     expect(viewFilterSpy).toHaveBeenCalled();
   });
 });

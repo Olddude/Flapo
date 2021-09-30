@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { loadPosts, toggleFilterOptions, toggleSortOptions, toggleView } from './post.actions';
+import { loadPosts, toggleFilterOption, toggleSortOption, toggleView } from './post.actions';
 
 import { PostService } from './post.service';
 
@@ -31,13 +31,13 @@ describe('PostService', () => {
   it('should toggle sort options on sort', () => {
     const storeDispatchSpy = spyOn(store, 'dispatch');
     service.sort();
-    expect(storeDispatchSpy).toHaveBeenCalledWith(toggleSortOptions());
+    expect(storeDispatchSpy).toHaveBeenCalledWith(toggleSortOption());
   });
 
   it('should toggle sort options on filter', () => {
     const storeDispatchSpy = spyOn(store, 'dispatch');
     service.filter();
-    expect(storeDispatchSpy).toHaveBeenCalledWith(toggleFilterOptions());
+    expect(storeDispatchSpy).toHaveBeenCalledWith(toggleFilterOption());
   });
 
   it('should toggle view', () => {

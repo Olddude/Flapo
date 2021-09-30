@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from '.';
 import { Store } from '@ngrx/store';
 import * as uriTemplate from 'uri-templates';
-import { filterOptions, sortOptions } from './post.selectors';
+import { filterOption, sortOption } from './post.selectors';
 
 @Injectable()
 export class PostEffects {
@@ -17,8 +17,8 @@ export class PostEffects {
     return this.actions$.pipe(
       ofType(PostActions.loadPosts),
       withLatestFrom(
-        this.store.select(sortOptions),
-        this.store.select(filterOptions)
+        this.store.select(sortOption),
+        this.store.select(filterOption)
       ),
       map(([_, sortBy, filterBy]) => {
         return uriTemplate(`${environment.api}/posts{?sortBy,filterBy}`)
@@ -35,14 +35,14 @@ export class PostEffects {
 
   toggleSort$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(PostActions.toggleSortOptions),
+      ofType(PostActions.toggleSortOption),
       switchMap(() => of(PostActions.loadPosts()))
     );
   });
 
   toggleFilter$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(PostActions.toggleFilterOptions),
+      ofType(PostActions.toggleFilterOption),
       switchMap(() => of(PostActions.loadPosts()))
     );
   });

@@ -12,6 +12,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [PostComponent],
@@ -23,7 +24,8 @@ import { MessageService } from 'primeng/api';
 
     DataViewModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    TranslateModule.forChild()
   ],
   providers: [MessageService]
 })

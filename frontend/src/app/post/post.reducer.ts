@@ -1,16 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterOptions, Post, SortOptions, ViewType } from '.';
+import { FilterOption, Post, SortOption, ViewType } from '.';
 import * as PostActions from './post.actions';
 
 export const postFeatureKey = 'post';
 
 export interface State {
   readonly view: ViewType;
+  readonly sortOption?: SortOption;
+  readonly filterOption?: FilterOption;
   readonly loading?: boolean;
   readonly error?: any;
   readonly response?: Post[];
-  readonly sortOptions?: SortOptions;
-  readonly filterOptions?: FilterOptions;
 }
 
 export const initialState: State = {
@@ -41,18 +41,19 @@ export const reducer = createReducer(
       ? ViewType.grid
       : ViewType.list
   })),
-  on(PostActions.toggleSortOptions, state => ({
+  on(PostActions.toggleSortOption, state => ({
     ...state,
-    sortOptions: !state.sortOptions
-      ? SortOptions.pricePerUnitAscending
-      : state.sortOptions === SortOptions.pricePerUnitAscending
-        ? SortOptions.pricePerUnitDescending
-        : SortOptions.pricePerUnitAscending
+    sortOption: !state.sortOption
+      ? SortOption.pricePerUnitAscending
+      : state.sortOption === SortOption.pricePerUnitAscending
+        ? SortOption.pricePerUnitDescending
+        : SortOption.pricePerUnitAscending,
+
   })),
-  on(PostActions.toggleFilterOptions, state => ({
+  on(PostActions.toggleFilterOption, state => ({
     ...state,
-    filterOptions: !state.filterOptions
-      ? FilterOptions.pricePerUnitLessThanTwo
+    filterOption: !state.filterOption
+      ? FilterOption.pricePerUnitLessThanTwo
       : undefined
   }))
 );

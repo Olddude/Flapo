@@ -9,10 +9,10 @@ import {
   loadPosts,
   loadPostsFailure,
   loadPostsSuccess,
-  toggleFilterOptions,
-  toggleSortOptions
+  toggleFilterOption,
+  toggleSortOption
 } from './post.actions';
-import { filterOptions, sortOptions } from './post.selectors';
+import { filterOption, sortOption } from './post.selectors';
 import { HttpClient } from '@angular/common/http';
 
 describe('PostEffects', () => {
@@ -31,8 +31,8 @@ describe('PostEffects', () => {
         provideMockActions(() => actions$),
         provideMockStore({
           selectors: [
-            { selector: sortOptions, value: undefined },
-            { selector: filterOptions, value: undefined },
+            { selector: sortOption, value: undefined },
+            { selector: filterOption, value: undefined },
           ]
         }),
         {
@@ -54,13 +54,13 @@ describe('PostEffects', () => {
   });
 
   it('should load posts after toggle sort', async () => {
-    actions$ = of(toggleSortOptions());
+    actions$ = of(toggleSortOption());
     const outputAction = await effects.toggleSort$.toPromise();
     expect(outputAction).toEqual(loadPosts());
   });
 
   it('should load posts after toggle sort', async () => {
-    actions$ = of(toggleFilterOptions());
+    actions$ = of(toggleFilterOption());
     const outputAction = await effects.toggleFilter$.toPromise();
     expect(outputAction).toEqual(loadPosts());
   });

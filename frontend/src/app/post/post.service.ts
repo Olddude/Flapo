@@ -3,14 +3,16 @@ import { Store } from '@ngrx/store';
 import {
   loadPosts,
   toggleView,
-  toggleFilterOptions,
-  toggleSortOptions
+  toggleFilterOption,
+  toggleSortOption
 } from './post.actions';
 import {
   isLoading,
   response,
   error,
-  view
+  view,
+  filterOption,
+  sortOption
 } from './post.selectors';
 
 @Injectable({ providedIn: 'root' })
@@ -20,6 +22,8 @@ export class PostService {
   response$ = this.store.select(response);
   error$ = this.store.select(error);
   view$ = this.store.select(view);
+  filterOption$ = this.store.select(filterOption);
+  sortOption$ = this.store.select(sortOption);
 
   constructor(
     private readonly store: Store<any>
@@ -30,7 +34,7 @@ export class PostService {
   }
 
   sort(): void {
-    this.store.dispatch(toggleSortOptions());
+    this.store.dispatch(toggleSortOption());
   }
 
   view(): void {
@@ -38,7 +42,7 @@ export class PostService {
   }
 
   filter(): void {
-    this.store.dispatch(toggleFilterOptions());
+    this.store.dispatch(toggleFilterOption());
   }
 
 }

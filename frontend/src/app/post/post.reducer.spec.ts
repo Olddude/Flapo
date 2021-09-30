@@ -1,10 +1,10 @@
-import { FilterOptions, SortOptions, ViewType } from '.';
+import { FilterOption, SortOption, ViewType } from '.';
 import {
   loadPosts,
   loadPostsFailure,
   loadPostsSuccess,
-  toggleFilterOptions,
-  toggleSortOptions,
+  toggleFilterOption,
+  toggleSortOption,
   toggleView
 } from './post.actions';
 import { reducer, initialState, State } from './post.reducer';
@@ -75,48 +75,48 @@ describe('Post Reducer', () => {
 
   describe('toggle sort options', () => {
     it('should set sort options [undefined -> pricePerUnit:asc]', () => {
-      const result = reducer(initialState, toggleSortOptions());
+      const result = reducer(initialState, toggleSortOption());
       expect(result).toEqual(jasmine.objectContaining<State>({
-        sortOptions: SortOptions.pricePerUnitAscending
+        sortOption: SortOption.pricePerUnitAscending
       }));
     });
 
     it('should set sort options [pricePerUnit:asc -> pricePerUnit:desc]', () => {
       const result = reducer({
         ...initialState,
-        sortOptions: SortOptions.pricePerUnitAscending
-      }, toggleSortOptions());
+        sortOption: SortOption.pricePerUnitAscending
+      }, toggleSortOption());
       expect(result).toEqual(jasmine.objectContaining<State>({
-        sortOptions: SortOptions.pricePerUnitDescending
+        sortOption: SortOption.pricePerUnitDescending
       }));
     });
 
     it('should set sort options [pricePerUnit:desc -> pricePerUnit:asc]', () => {
       const result = reducer({
         ...initialState,
-        sortOptions: SortOptions.pricePerUnitDescending
-      }, toggleSortOptions());
+        sortOption: SortOption.pricePerUnitDescending
+      }, toggleSortOption());
       expect(result).toEqual(jasmine.objectContaining<State>({
-        sortOptions: SortOptions.pricePerUnitAscending
+        sortOption: SortOption.pricePerUnitAscending
       }));
     });
   });
 
   describe('toggle filter options', () => {
     it('should set filter options [undefined -> pricePerUnit:$lt2.00]', () => {
-      const result = reducer(initialState, toggleFilterOptions());
+      const result = reducer(initialState, toggleFilterOption());
       expect(result).toEqual(jasmine.objectContaining<State>({
-        filterOptions: FilterOptions.pricePerUnitLessThanTwo
+        filterOption: FilterOption.pricePerUnitLessThanTwo
       }));
     });
 
     it('should set filter options [pricePerUnit:$lt2.00 -> undefined]', () => {
       const result = reducer({
         ...initialState,
-        filterOptions: FilterOptions.pricePerUnitLessThanTwo
-      }, toggleFilterOptions());
+        filterOption: FilterOption.pricePerUnitLessThanTwo
+      }, toggleFilterOption());
       expect(result).toEqual(jasmine.objectContaining<State>({
-        filterOptions: undefined
+        filterOption: undefined
       }));
     });
   });

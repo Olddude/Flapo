@@ -1,11 +1,12 @@
+import { FilterOption, SortOption, ViewType } from '.';
 import * as fromPost from './post.reducer';
 import {
   selectPostState,
   error,
-  filterOptions,
+  filterOption,
   isLoading,
   response,
-  sortOptions,
+  sortOption,
   view
 } from './post.selectors';
 
@@ -52,29 +53,29 @@ describe('Post Selectors', () => {
     const result = view({
       [fromPost.postFeatureKey]: {
         ...fromPost.initialState,
-        view: 'list'
+        view: ViewType.list
       }
     });
-    expect(result).toEqual('list');
+    expect(result).toEqual(ViewType.list);
   });
 
-  it('should select sort options', () => {
-    const result = sortOptions({
+  it('should select sort option', () => {
+    const result = sortOption({
       [fromPost.postFeatureKey]: {
         ...fromPost.initialState,
-        sortOptions: ''
+        sortOption: SortOption.pricePerUnitAscending
       }
     });
-    expect(result).toEqual('');
+    expect(result).toEqual(SortOption.pricePerUnitAscending);
   });
 
   it('should select filter options', () => {
-    const result = filterOptions({
+    const result = filterOption({
       [fromPost.postFeatureKey]: {
         ...fromPost.initialState,
-        filterOptions: ''
+        filterOption: FilterOption.pricePerUnitLessThanTwo
       }
     });
-    expect(result).toEqual('');
+    expect(result).toEqual(FilterOption.pricePerUnitLessThanTwo);
   });
 });
