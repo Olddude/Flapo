@@ -5,7 +5,13 @@ import { Observable, of, throwError } from 'rxjs';
 import { PostEffects } from './post.effects';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { loadPosts, loadPostsFailure, loadPostsSuccess, toggleFilterOptions, toggleSortOptions } from './post.actions';
+import {
+  loadPosts,
+  loadPostsFailure,
+  loadPostsSuccess,
+  toggleFilterOptions,
+  toggleSortOptions
+} from './post.actions';
 import { filterOptions, sortOptions } from './post.selectors';
 import { HttpClient } from '@angular/common/http';
 

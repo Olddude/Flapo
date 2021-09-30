@@ -11,20 +11,20 @@ describe('PostComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        DataViewModule
+      ],
       declarations: [ PostComponent ],
       providers: [
         {
           provide: PostService,
-          useFactory: () => ({
+          useFactory: (): Partial<PostService> => ({
             load: () => ({}),
             sort: () => ({}),
             filter: () => ({}),
             view: () => ({})
           })
         }
-      ],
-      imports: [
-        DataViewModule
       ]
     })
     .compileComponents();
