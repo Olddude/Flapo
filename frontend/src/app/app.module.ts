@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastModule } from 'primeng/toast';
+import { ErrorHandlingInterceptor } from './middleware/error-handling-http-interceptor';
+import { MessageService } from 'primeng/api';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -42,9 +45,17 @@ export function createTranslateLoader(http: HttpClient) {
       logOnly: environment.production
     }),
     StoreRouterConnectingModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlingInterceptor,
+      multi: true
+    },
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

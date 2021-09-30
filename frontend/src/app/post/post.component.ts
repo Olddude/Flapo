@@ -10,31 +10,35 @@ import { PostService } from './post.service';
 })
 export class PostComponent {
 
-  isLoading$ = this.service.isLoading$;
-  posts$ = this.service.response$;
-
-  sortIcons = {
+  private static SORT_ICONS = {
     [SortOption.pricePerUnitAscending]: 'pi pi-sort-up',
     [SortOption.pricePerUnitDescending]: 'pi pi-sort-down'
   };
-  currentSortIcon$ = this.service.sortOption$.pipe(
-    map(sortOption => this.sortIcons[sortOption] || 'pi pi-sort')
-  );
 
-  view$ = this.service.view$;
-  viewIcons = {
+  private static FILTER_ICONS = {
+    [FilterOption.pricePerUnitLessThanTwo]: 'pi pi-wallet'
+  };
+
+  private static VIEW_ICONS = {
     [ViewType.list]: 'pi pi-list',
     [ViewType.grid]: 'pi pi-table'
   };
-  currentViewIcon$ = this.service.view$.pipe(
-    map(view => this.viewIcons[view])
+
+  isLoading$ = this.service.isLoading$;
+  posts$ = this.service.response$;
+
+  currentSortIcon$ = this.service.sortOption$.pipe(
+    map(key => PostComponent.SORT_ICONS[key] || 'pi pi-sort')
   );
 
-  filterIcons = {
-    [FilterOption.pricePerUnitLessThanTwo]: 'pi pi-money-bill'
-  };
+  view$ = this.service.view$;
+
+  currentViewIcon$ = this.service.view$.pipe(
+    map(view => PostComponent.VIEW_ICONS[view])
+  );
+
   currentFilterIcon$ = this.service.filterOption$.pipe(
-    map(filterOption => this.filterIcons[filterOption] || 'pi pi-wallet')
+    map(key => PostComponent.FILTER_ICONS[key] || 'pi pi-money-bill')
   );
 
   constructor(

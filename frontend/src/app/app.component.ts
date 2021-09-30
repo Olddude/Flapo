@@ -12,5 +12,6 @@ export class AppComponent {
     private readonly translate: TranslateService
   ) {
     this.translate.setDefaultLang(environment.defaultLanguage);
+    this.translate.use(navigator.language.split('-')[0]);
   }
 }
