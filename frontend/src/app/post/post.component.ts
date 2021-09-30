@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { filter, map } from 'rxjs/operators';
 import { PostService } from './post.service';
 
 @Component({

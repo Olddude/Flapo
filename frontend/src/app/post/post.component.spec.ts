@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DataViewModule } from 'primeng/dataview';
 
 import { PostComponent } from './post.component';
 import { PostService } from './post.service';
@@ -21,6 +22,9 @@ describe('PostComponent', () => {
             view: () => ({})
           })
         }
+      ],
+      imports: [
+        DataViewModule
       ]
     })
     .compileComponents();
